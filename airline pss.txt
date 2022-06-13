@@ -1,0 +1,162 @@
+LINKS:
+> https://www.altexsoft.com/blog/airline-reservation-systems-passenger-service-systems/
+> https://www.altexsoft.com/blog/ndc-technology-for-airlines/
+
+
+DEFINITIONS:
+> PSS: Passenger Service System
+> ARS: Airline Reservation System
+> DCS: Departure Control System
+> CRS: Computer (Central) Reservation System
+> GDS: Global Distribution Systems
+> PNR: Passenger Name Record
+> ICS: Inventory Control System
+> TPF: Transaction Processing Facility
+> RMS: Revenue Management System
+
+
+PSS OVERVIEW:
+> RMS
+> DCS
+> ARS
+> ICS
+> Retail Platform
+> Third-party API (NDC offer and order)
+
+
+MAIN PSS MODULES:
+
+
+Departure Control System (DCS):
+- Processes Check-ins
+- Controlling Baggage
+- Generating boarding passes and baggage tags
+- Sharing data with security services
+- Generating Load Sheets
+
+Airline Reservation System (ARS):
+- Booking
+- Managing Reservations
+- Scheduling
+- Generating PNRs
+- Ticketing
+
+Inventory Control System (ICS):
+- Controlling seat availability
+- Managing Fare Groups
+
+The eCommerce platform that allows flyers to buy a ticket or search flights, will have direct
+access to the ARS. Furthermore, Third party distributors will need direct access to an API which will be
+integrated with the ARS.
+
+A Revenue Management System (RMS) will need to be created to monitor expenses for financial sides of an Airline Industry,
+this module will have direct access to the ICS.
+
+DCS and ICS are integrated with ARS but do not have direct access to each other
+
+
+ADDITIONAL PSS MODULES:
+
+
+Revenue Management System:
+Similar to hotels, airlines will need to maximise their revenue. A system must be created, with analytical data
+of pricing tickets. Data should be comparable to the time until the flight, if it is a rebooking and previous travels.
+We first get the calculated price for the departure, destination, time, distance, airplane etc. Then we adjust the price
+with the extra data to potentially increase revenue.
+
+It will also include forecasting demand utilizing historical data and other inputs like fluctuations in customer
+behavior, market trends, and competitors’ strategies and recommending booking limits to maximize the expected
+flight revenue.
+
+Retailing Platform:
+This is a system allowing for passengers to search for flights, review membership information, airtime rewards system
+and accept payments. It should accept many payment options from different types of debit cards to using points and also
+cryptocurrency. There should be a catalog dedicated to airline products. Another catalog should be included for car
+retails, attraction tickets depending on the country/destination and more.
+
+The system can easily be improved through an AI-fueled tool that personalises offers, loyalty programs through
+collected data.
+
+New Distribution Capability (NDC):
+The eCommerce platform will allow users to buy a ticket, however, when searching, a fare must be calculated. We must
+also include the data to increase revenue. We need a full offer and order management system through a NDC.
+
+A NDC has two main modules for an indirect flight distribution model. The Airline and the content aggregators. To
+operate these two modules and for them to interact with the customer, we need a NDC API.
+
+So, Airline. As discussed above, there is the PSS. We will then need an offer creation within the Airline itself.
+We also need a order management to accept orders from the customers from third-parties.
+
+Then we have the Content Aggregators. This system uses the data collected to alter the prices to personalise the offers
+to increase the revenue or reward the flyer.
+
+The system will then pass on to the agents' system (the third-parties access to the api), if the offer is accepted,
+it will then return to the order management system which updates the PSS accordingly. Whether it is a cancel, new
+flight, updated flight, etc.
+
+
+DEPARTURE CONTROL (DC):
+
+
+This system aids passengers on their journey. I would like to set up a system where the user can log in to the
+application and use a "track and trace" system to monitor luggage, airline times, when to expect their flight, landing,
+etc. This will all be accessible the day before the flight itself.
+
+There will be a compensation management tool, using traveler profiles and data about the customer, the software
+will calculate the correct repayments for each customer. So when a flight is delayed, it keeps some passengers happier.
+
+There will also be a flight management component to control and optimise load distribution within the airplane itself.
+This allows the airline to monitor weight distribution, keep fuel costs low  (more weight = more fuel = more cost).
+
+The ticketing component covers all ticket management functions: issuing electronic and paper tickets, ticket changes,
+and generating EMDs from ancillary sales.
+
+
+RETAILING DETAILS:
+
+
+Revenue streams: Cargo, Fare, Ancillaries.
+Cost streams: Fuel, Labor, other operating costs.
+Net Profit: Revenue streams - Cost streams.
+
+
+DATABASE:
+> Airplanes
+ID, NAME, TYPE, AGE, MAX_PASSENGER, MAX_WEIGHT
+> Airports
+ID, NAME, ACCESS?
+> Customers
+ID, FORENAME(s), SURNAME, AGE, PHONE NO., EMAIL, PASSWORD, ...
+> Flights
+ID, FLIGHT_ID, DEPARTURE, ARRIVAL, TIME_TO_DEST, FLIGHT_PATH, PASSENGERS, ...
+> ...
+
+
+SYSTEM CONTROL:
+
+
+Processing Check Ins:
+Desc.: Where a flyer will hand over a boarding pass, details to board the plane.
+1. Check boarding pass, correct plane? Correct flight? Allowed?
+2. Check details, e.g. passport?
+3. Confirm flyer is on board the flight.
+
+Controlling Baggage:
+Desc.: Monitor baggage entering the plane, send data to departure control (DC).
+1.1. Check weight of luggage, add weight if necessary.
+1.2. Generate baggage tag. Add label to baggage.
+2. Send to loading bag.
+3. When luggage is getting loaded on board, scan baggage to ensure loading process.
+4. Left behind baggage, ensure its found or reported to the user, their luggage location is unknown atm.
+
+Generating boarding passes and baggage tags:
+Desc.: In the name
+1. Upon request generation, create a pass or tag using the creation system.
+2. Assign the id of the pass or tag to the passenger group.
+3. Attach to bag, then process the luggage into the loading bay.
+
+Sharing data with security services:
+Desc.:
+1. Inform airport about newly loaded luggage onto plane.
+2. Suspicious luggage? Inform security.
+
